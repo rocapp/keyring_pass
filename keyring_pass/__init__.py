@@ -90,7 +90,7 @@ class PasswordStoreBackend(backend.KeyringBackend):
         return path
 
     def set_password(self, servicename, username, password):
-lines = password.splitlines()
+        lines = password.splitlines()
         if not lines or not lines[0]:
             raise ValueError(
                 "No password was provided. Please provide a non-empty string to set the password."
@@ -196,5 +196,3 @@ lines = password.splitlines()
 
     def delete_password(self, service, username):
         command([self.pass_binary, "rm", "--force", self.get_key(service, username)])
-
-
