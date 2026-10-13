@@ -90,6 +90,7 @@ class PasswordStoreBackend(backend.KeyringBackend):
         return path
 
     def set_password(self, servicename, username, password):
+        assert len(password.splitlines()) > 0, "No password was provided. Please provide a non-empty string to set the password."
         password = password.splitlines()[0]
         inp = "%s\n" % password
         inp *= 2
